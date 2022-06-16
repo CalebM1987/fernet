@@ -1,0 +1,25 @@
+{
+  "name": "@crmackey/fernet",
+  "version": "0.0.1",
+  "type": "module",
+  "module": "./dist/esm/index.js",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "test": "jest --verbose",
+    "publish": "npm publish --access public",
+    "build": "rm -rf dist && ts-node scripts/build.ts && tsc --emitDeclarationOnly --outDir dist/types"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "crypto-js": "3.1.2-1",
+    "randombytes": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@types/node": "^18.0.0",
+    "@types/randombytes": "^2.0.0",
+    "esbuild": "^0.14.44",
+    "sinon": "^14.0.0"
+  }
+}

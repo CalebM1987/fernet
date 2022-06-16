@@ -15,10 +15,6 @@
     "encryption",
     "fernet"
   ],
-  "files": [
-    "src",
-    "dist",
-  ]
   "scripts": {
     "test": "jest --verbose",
     "publish": "npm publish --access public",

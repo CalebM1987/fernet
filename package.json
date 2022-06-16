@@ -2,9 +2,19 @@
   "name": "@crmackey/fernet",
   "version": "0.0.2",
   "type": "module",
+  "description": "ypeScript implementation of Fernet symmetric encryption.",
   "module": "./dist/esm/index.js",
   "main": "./dist/cjs/index.js",
   "types": "./dist/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CalebM1987/fernet.git"
+  },
+  "keywords": [
+    "symmetric",
+    "encryption",
+    "fernet"
+  ],
   "scripts": {
     "test": "jest --verbose",
     "publish": "npm publish --access public",

@@ -13,7 +13,7 @@
  */
 // import URLBase64 from "urlsafe-base64"; // having issues finding buffer
 import { Buffer } from 'buffer';
-console.debug('BUFFER IS: ', Buffer)
+// console.debug('BUFFER IS: ', Buffer)
 import randomBytes from "randomBytes";
 import AES from "crypto-js/aes";
 import Utf8 from "crypto-js/enc-utf8";
@@ -396,7 +396,6 @@ class Token {
       throw new Error("Invalid Token: TTL");
     }
 
-    console.log(this.time, timeInt, this.maxClockSkew)
     //@ts-ignore
     if (currentTime / 1000 + this.maxClockSkew < timeInt) {
       throw new Error("far-future timestamp");

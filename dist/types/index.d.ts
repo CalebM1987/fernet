@@ -1,1 +1,1 @@
-export { defaults, setSecret, Secret, Token } from './lib/fernet';
+export * from './lib/fernet';

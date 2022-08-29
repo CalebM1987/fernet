@@ -9,7 +9,7 @@ import { Buffer } from 'buffer';
 import Hex from "crypto-js/enc-hex";
 import Base64 from "crypto-js/enc-base64";
 declare const defaults: Partial<FernetOptions>;
-export declare type TextKey = string | CryptoJS.lib.WordArray;
+declare type TextKey = string | CryptoJS.lib.WordArray;
 /**
  * Makes a Base64 string a url-safe base64 slertring
  * @param {String} string - input string to make url-safe
@@ -69,7 +69,7 @@ declare class Secret {
      */
     constructor(secret64: string);
 }
-export interface FernetOptions {
+interface FernetOptions {
     /** time to live in seconds, if specfied a token
      * whose lifespan is longer than TTL will not be decrypted
      * */
@@ -147,4 +147,4 @@ declare class Token {
      */
     decode(token?: string): string;
 }
-export { defaults, Buffer, Secret, Token, setSecret, ArrayToHex, timeBytes, decode64toHex, createHmac, hexBits, urlsafe, Base64, Hex };
+export { defaults, Buffer, Secret, Token, TextKey, FernetOptions, setSecret, ArrayToHex, timeBytes, decode64toHex, createHmac, hexBits, urlsafe, Base64, Hex };

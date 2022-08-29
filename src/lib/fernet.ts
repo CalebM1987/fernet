@@ -53,7 +53,7 @@ const URLBase64 = {
   }
 }
 
-export type TextKey = string | CryptoJS.lib.WordArray;
+type TextKey = string | CryptoJS.lib.WordArray;
 
 
 /**
@@ -255,7 +255,7 @@ class Secret {
   }
 }
 
-export interface FernetOptions {
+interface FernetOptions {
   /** time to live in seconds, if specfied a token 
    * whose lifespan is longer than TTL will not be decrypted 
    * */
@@ -435,6 +435,8 @@ export {
   Buffer,
   Secret,
   Token,
+  TextKey,
+  FernetOptions,
   setSecret,
   ArrayToHex,
   timeBytes,

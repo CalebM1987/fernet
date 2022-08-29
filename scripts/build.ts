@@ -25,5 +25,8 @@ const configs: esbuild.BuildOptions[] = [
 
 // build all formats
 for (const config of configs){
-  esbuild.build(config)
+  esbuild.build({
+    minify: true,
+    ...config
+  })
 }

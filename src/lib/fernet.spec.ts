@@ -11,7 +11,7 @@ import {
   Base64
 } from './fernet';
 
-//@ts-ignore
+// import fakeTimers from '@sinonjs/fake-timers'
 import sinon from 'sinon'
 
 const testData = {
@@ -29,6 +29,7 @@ const unacceptableClockSkewTestData = {
   now: "1985-10-26T01:20:01-07:00",
   secret: "cw_0x689RpI-jtRR7oE8h_eQsKImvJapLeSbXpwF4e4="
 };
+
 
 const secret = new Secret(testData.secret);
 
@@ -142,34 +143,34 @@ describe('validates HMAC', ()=> {
   })
 })
 
-// describe('validates far future timestamp', ()=> {
-//   const token = new Token({
-//     secret: new Secret(unacceptableClockSkewTestData.secret),
-//     token: unacceptableClockSkewTestData.token,
-//     ttl: 0
-//   });
-  
-//   const clock = sinon.useFakeTimers(
-//     new Date(Date.parse(unacceptableClockSkewTestData.now)).getTime()
-//   );
+describe('validates far future timestamp', ()=> {
 
-//   it('raises new Error("far-future timestamp") on unacceptable clock skew', ()=> {
-//     expect(()=> token.decode()).toThrowError('far-future timestamp')
-//   })
-//   clock.restore()
-// })
+  it('raises new Error("far-future timestamp") on unacceptable clock skew', ()=> {
+    const token = new Token({
+      secret: new Secret(unacceptableClockSkewTestData.secret),
+      token: unacceptableClockSkewTestData.token,
+      ttl: 0
+    });
+    
+    const clock = sinon.useFakeTimers(
+      new Date(Date.parse(unacceptableClockSkewTestData.now)).getTime()
+    )
+    expect(()=> token.decode()).toThrowError('far-future timestamp')
+    clock.restore()
+  })
+})
 
-/*****************************    ENCODING     **************************************** */
+// /*****************************    ENCODING     **************************************** */
 describe('encoding tests', ()=> {
   const token = new Token({
     secret,
     iv: testData.iv,
     time: testData.now
   })
+  
 
   it('should encode message', ()=> {
     const encoded = token.encode(testData.src)
-    console.log('encoded: ', encoded)
     expect(testData.token).toEqual(token.toString())
   })
 
@@ -238,5 +239,25 @@ describe('fernet Secret tests', ()=> {
   
   it('raises "new Error(\'Secret must be 32 url-safe base64-encoded bytes.\')" on wrong secret', ()=> {
     expect(()=> new Secret('not a good secret')).toThrowError('Secret must be 32 url-safe base64-encoded bytes.')
+  })
+})
+
+describe('decodes within TTL time frame and throws TTL error after expiration', ()=> {
+
+  it('should validate TTL before decoding', ()=> {
+    const clock = sinon.useFakeTimers(
+      new Date(Date.parse(unacceptableClockSkewTestData.now)).getTime()
+    )
+    const token = new Token({ secret: secret });
+    token.encode(testData.src)
+    // go forward 15 seconds
+    clock.tick(15000)
+    const dec = new Token({ secret, ttl: 30})
+    expect(dec.decode(token.token)).toEqual(testData.src)
+
+    // now make sure it throws TTL error after TTL expires
+    clock.tick(30000)
+    expect(()=> dec.decode(token.token)).toThrowError('Invalid Token: TTL')
+    clock.reset()
   })
 })

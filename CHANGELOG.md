@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/CalebM1987/fernet/compare/v0.0.8...v0.0.9) (2022-09-09)
+
+
+### Bug Fixes
+
+* fixed TTL validation bug ([332e36d](https://github.com/CalebM1987/fernet/commit/332e36d5f79df8946d029ddf02bcee9b51e3b7b1))
+
 ### [0.0.8](https://github.com/CalebM1987/fernet/compare/v0.0.7...v0.0.8) (2022-08-29)
 
 

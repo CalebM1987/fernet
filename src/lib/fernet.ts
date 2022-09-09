@@ -13,7 +13,6 @@
  */
 // import URLBase64 from "urlsafe-base64"; // having issues finding buffer
 import { Buffer } from 'buffer';
-// console.debug('BUFFER IS: ', Buffer)
 import randomBytes from "randomBytes";
 import AES from "crypto-js/aes";
 import Utf8 from "crypto-js/enc-utf8";
@@ -26,7 +25,6 @@ const defaults: Partial<FernetOptions> = {
   versionHex: '80',
   secret: undefined
 }
-
 
 const URLBase64 = {
   encode(buffer: Buffer) {
@@ -45,7 +43,7 @@ const URLBase64 = {
       .replace(/\-/g, '+') // Convert '-' to '+'
       .replace(/\_/g, '/'); // Convert '_' to '/'
   
-    return new Buffer(base64, 'base64');
+    return Buffer.from(base64, 'base64');
   },
 
   validate(base64: string) {
@@ -54,7 +52,6 @@ const URLBase64 = {
 }
 
 type TextKey = string | CryptoJS.lib.WordArray;
-
 
 /**
  * left pad a string for some hex conversions (changed to function rather than messing with the string prototype)
@@ -103,7 +100,7 @@ function hexBits(bits: number) {
  */
 function decode64toHex(string: string) {
   const s = URLBase64.decode(string.replace(/=+$/, ""));
-  return new Buffer(s).toString("hex");
+  return Buffer.from(s).toString("hex");
 }
 
 /**
@@ -174,7 +171,7 @@ function setSecret(secret64: string) {
  * @return {String} encrypted message
  */
 function encryptMessage(message: string, encryptionKey: TextKey, iv: CryptoJS.lib.WordArray) {
-  const encrypted = AES.encrypt(message, encryptionKey, { iv: iv });
+  const encrypted = AES.encrypt(message, encryptionKey, { iv });
   return encrypted.ciphertext;
 }
 
@@ -189,10 +186,10 @@ function decryptMessage(cipherText: TextKey, encryptionKey: TextKey, iv: CryptoJ
   const encrypted = {
     ciphertext: cipherText,
     key: encryptionKey,
-    iv: iv
+    iv
   };
 
-  const decrypted = AES.decrypt(encrypted as any, encryptionKey, { iv: iv });
+  const decrypted = AES.decrypt(encrypted as any, encryptionKey, { iv });
   return decrypted.toString(Utf8);
 }
 
@@ -224,9 +221,7 @@ function createToken(signingKey: TextKey, time: CryptoJS.lib.WordArray, iv: Cryp
 function createHmac(signingKey: TextKey, time: CryptoJS.lib.WordArray, iv: CryptoJS.lib.WordArray, cipherText: TextKey) {
   let hmacWords = Hex.parse(defaults.versionHex!);
   for (let c of [time, iv, cipherText]) {
-    if (c){
-      hmacWords = hmacWords.concat(c as any);
-    }
+    hmacWords = hmacWords.concat(c as any);
   }
   return HmacSHA256(hmacWords, signingKey);
 }
@@ -327,7 +322,8 @@ class Token {
     this.token = opts.token ?? '';
     this.version = opts.version || parseHex(defaults.versionHex!);
     this.optsIV = opts.iv as CryptoJS.lib.WordArray;
-    this.time = opts.time ? timeBytes(new Date(Date.parse(opts.time))) : timeBytes(new Date());
+    // @ts-ignore
+    this.time = opts.time ? timeBytes(Date.parse(opts.time)) : timeBytes();
     this.encoded = false
   }
 
@@ -379,7 +375,6 @@ class Token {
     const ivOffset = timeOffset + hexBits(128);
     const hmacOffset = tokenString.length - hexBits(256);
     const timeInt = parseHex(tokenString.slice(versionOffset, timeOffset));
-
     this.version = parseHex(tokenString.slice(0, versionOffset));
 
     if (this.version != 128) {
@@ -387,16 +382,14 @@ class Token {
     }
 
     this.time = new Date(timeInt * 1000);
-
-    const currentTime = new Date();
-    //@ts-ignore
-    const timeDiff = (currentTime - this.time) / 1000;
+    const currentTime = new Date()
+    // @ts-ignore
+    const timeDiff = (currentTime - this.time) / 1000
 
     if (this.ttl! > 0 && timeDiff > this.ttl!) {
       throw new Error("Invalid Token: TTL");
     }
-
-    //@ts-ignore
+    // @ts-ignore
     if (currentTime / 1000 + this.maxClockSkew < timeInt) {
       throw new Error("far-future timestamp");
     }

@@ -1,15 +1,14 @@
+import type { Config } from '@jest/types'
+
 /* eslint-disable */
-export default {
+const config: Config.InitialOptions = {
   displayName: 'fernet',
-  preset: '../../jest.preset.js',
-  globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
-    },
-  },
+  verbose: true,
   transform: {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/fernet',
 };
+
+export default config

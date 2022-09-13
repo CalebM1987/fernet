@@ -4,6 +4,7 @@ import type { Config } from '@jest/types'
 const config: Config.InitialOptions = {
   displayName: 'fernet',
   verbose: true,
+  testEnvironment: 'jsdom',
   transform: {
     '^.+\\.[tj]s$': 'ts-jest',
   },

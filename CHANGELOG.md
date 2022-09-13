@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/CalebM1987/fernet/compare/v0.0.11...v0.0.12) (2022-09-13)
+
+
+### Bug Fixes
+
+* **test:** use jsdom for node testing environment ([f31babb](https://github.com/CalebM1987/fernet/commit/f31babbd87243fe52e8dde1d6f6ef6b45ca86543))
+
 ### [0.0.11](https://github.com/CalebM1987/fernet/compare/v0.0.10...v0.0.11) (2022-09-13)
 
 ### [0.0.10](https://github.com/CalebM1987/fernet/compare/v0.0.9...v0.0.10) (2022-09-13)

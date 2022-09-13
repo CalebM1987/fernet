@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/CalebM1987/fernet/compare/v0.0.9...v0.0.10) (2022-09-13)
+
+
+### Bug Fixes
+
+* try to polyfill global when it is not defined ([65a5c1f](https://github.com/CalebM1987/fernet/commit/65a5c1f95b268cbe527f8d28c219692f394959a5))
+
 ### [0.0.9](https://github.com/CalebM1987/fernet/compare/v0.0.8...v0.0.9) (2022-09-09)
 
 

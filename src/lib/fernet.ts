@@ -1,10 +1,7 @@
 
-// import buffer from './buffer'
-// const { Buffer } = buffer
-// window ? window.buffer = buffer: null
-// globalThis ? globalThis.buffer = buffer: null
-// window ? window.Buffer = Buffer: null
-// globalThis ? globalThis.Buffer = Buffer: null;
+if (typeof (window as any).global === 'undefined') {
+  (window as any).global = window;
+}
 /**
  * This an es6 port of the library found here:
  *    https://github.com/csquared/fernet.js

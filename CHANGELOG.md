@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/CalebM1987/fernet/compare/v0.0.12...v0.0.13) (2023-01-21)
+
+
+### Features
+
+* added demo app and vite usage info ([a9edd6c](https://github.com/CalebM1987/fernet/commit/a9edd6cc06306ca03dbf5bc0d05fc3dc4e9cdc2f))
+
 ### [0.0.12](https://github.com/CalebM1987/fernet/compare/v0.0.11...v0.0.12) (2022-09-13)
 
 

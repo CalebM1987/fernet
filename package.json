@@ -1,6 +1,6 @@
 {
   "name": "@crmackey/fernet",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "description": "ypeScript implementation of Fernet symmetric encryption.",
   "module": "./dist/esm/index.js",

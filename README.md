@@ -41,7 +41,7 @@ export default defineConfig({
 })
 ```
 
-There is an included [demo](https://github.com/CalebM1987/fernet/demo) application demonstrating the usage of this library. 
+There is an included [demo](https://github.com/CalebM1987/fernet/tree/main/demo) application demonstrating the usage of this library. 
 
 > note: See [Issue #1](https://github.com/CalebM1987/fernet/issues/1) for more details.
 >

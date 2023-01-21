@@ -134,9 +134,7 @@ const secret = new Secret("cw_0x689RpI-jtRR7oE8h_eQsKImvJapLeSbXpwF4e4=");
 //Have to include time and iv to make it deterministic.
 //Normally time would default to (new Date()) and iv to something random.
 const token = new Token({
-  secret: secret,
-  time: Date.parse(1),
-  iv: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  secret: secret
 });
 token.encode("Message"); // returns the encypted message
 /*

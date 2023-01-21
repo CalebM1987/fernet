@@ -1,6 +1,8 @@
-# Vue 3 + TypeScript + Vite
+# Fernet Demo App
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This demo shows an example of the `@crmackey/fernet` package in action:
+
+![app image](./images/demo_app.png)
 
 ## Recommended IDE Setup
 

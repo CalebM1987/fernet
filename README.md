@@ -24,6 +24,29 @@ If you're planning on generating the secrets in the browser do yourself a favor 
 
 ## Usage
 
+### Use in Vite
+
+Important! if you are using this library in [vite](https://vitejs.dev/) projects, you will need to shim the `global` variable. This is necessary due to the usage of the builtin `crypto` library and native `Buffer` objects. To work around this, simply define `global` in the `vite.config.ts` file:
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  define: {
+    global: 'window'
+  },
+  plugins: [vue()],
+})
+```
+
+There is an included [demo](https://github.com/CalebM1987/fernet/demo) application demonstrating the usage of this library. 
+
+> note: See [Issue #1](https://github.com/CalebM1987/fernet/issues/1) for more details.
+>
+> ![app image](./demo/images/demo_app.png)
+
 ### node.js (use `Token` and `Secret` directly)
 
 ```js

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/CalebM1987/fernet/compare/v0.0.14...v0.0.15) (2023-01-24)
+
+
+### Features
+
+* **demo:** improved demo with TTL support ([498e5ca](https://github.com/CalebM1987/fernet/commit/498e5ca24de958a4a1ea43abeed4534bae325b8b))
+
 ### [0.0.14](https://github.com/CalebM1987/fernet/compare/v0.0.13...v0.0.14) (2023-01-21)
 
 ### [0.0.13](https://github.com/CalebM1987/fernet/compare/v0.0.12...v0.0.13) (2023-01-21)

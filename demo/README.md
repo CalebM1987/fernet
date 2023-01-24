@@ -4,10 +4,10 @@ This demo shows an example of the `@crmackey/fernet` package in action:
 
 ![app image](./images/demo_app.png)
 
-test the TTL (time to live) functionality
+test the TTL (time to live) functionality. A TTL token can be set to ensure the encrypted message can only be decrypted within a certain amount of time (TTL is always in seconds):
 ![app image](./images/test_ttl.png)
 
-Invalid TTL (time to live expired, fails to decrypt)
+When the message has expired, an Invalid TTL error is displayed (time to live expired, fails to decrypt):
 ![app image](./images/invalid_ttl.png)
 
 ## Recommended IDE Setup

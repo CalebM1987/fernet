@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import EncryptionTest from './components/EncryptionTest.vue'
 </script>
 
 <template>
@@ -11,13 +11,13 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld />
+  <encryption-test />
 </template>
 
 <style scoped>
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 4.25em;
+  padding: 1rem 1.5em;
   will-change: filter;
 }
 .logo:hover {

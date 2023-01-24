@@ -4,6 +4,12 @@ This demo shows an example of the `@crmackey/fernet` package in action:
 
 ![app image](./images/demo_app.png)
 
+test the TTL (time to live) functionality
+![app image](./images/test_ttl.png)
+
+Invalid TTL (time to live expired, fails to decrypt)
+![app image](./images/invalid_ttl.png)
+
 ## Recommended IDE Setup
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).

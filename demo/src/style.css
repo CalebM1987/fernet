@@ -32,6 +32,10 @@ body {
   min-height: 100vh;
 }
 
+i {
+  font-size: 90%;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -45,10 +49,30 @@ input {
 }
 
 textarea {
-  height: 400px;
+  height: 100px;
   width: 100%;
   padding: .5rem;
   margin: 1rem 0 1rem 0;
+  overflow-y: auto;
+}
+
+.error {
+  padding: 0.5rem;
+  border: solid 1px red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expires {
+  color: orange;
+}
+
+.expired {
+  color: red;
 }
 
 button {
@@ -71,15 +95,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+#decrypted {
+  height: 50px;
+}
+
 .card {
-  padding: 2em;
+  padding: 1.25rem 2em;
   width: 450px;
 }
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
   text-align: center;
 }
 
